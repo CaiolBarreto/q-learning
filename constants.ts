@@ -1,6 +1,21 @@
-export const PATHS = [
+import { Direction } from './types';
+
+// With the walls
+export const REWARDS = [
+  [-1, -10, -10, -1],
+  [-1, -10, -1, -10],
+  [-1, -1, -10, -1],
+  [-1, -1, -1, -10],
+  [-10, -1, -10, -1],
+  [10, 10, 10, 10],
+]
+
+export const ALPHA = 0.5;
+export const GAMMA = 1;
+
+export const TRAILS: Direction[][][] = [
   [
-    ['UP', 'RW'],
+    ['UP', 'RG'],
     ['DW', 'DW'],
     ['RG', 'RG'],
     ['LF', 'LF'],

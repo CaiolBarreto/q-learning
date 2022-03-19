@@ -1,0 +1,1 @@
+export type Direction = 'UP' | 'DW' | 'LF' | 'RG';
