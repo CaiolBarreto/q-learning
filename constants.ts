@@ -10,6 +10,15 @@ export const REWARDS = [
   [10, 10, 10, 10],
 ]
 
+export const QMATRIX = [
+  [0, 0, 0, 0],
+  [0, 0, 0, 0],
+  [0, 0, 0, 0],
+  [0, 0, 0, 0],
+  [0, 0, 0, 0],
+  [10, 10, 10, 10],
+];
+
 export const ALPHA = 0.5;
 export const GAMMA = 1;
 

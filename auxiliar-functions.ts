@@ -1,4 +1,4 @@
-import { DirectionFactory } from "./direction-factory";
+import { DirectionFactory } from './direction-factory';
 import { Direction } from './types'
 
 export const randomAction = (action: Direction) => {
