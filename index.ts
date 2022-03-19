@@ -10,7 +10,7 @@ TRAILS.forEach((trail, trailIndex) => {
     const actionPath = randomAction(currAction);
     const nextStatePath = nextState(actualState, nextAction);
 
-    console.log(`${actualState + 1} | ${currAction} x ${nextAction} -> ${nextStatePath + 1}`);
+    console.log(`${actualState + 1}: ${currAction} x ${nextAction} ----> ${nextStatePath + 1}`);
 
     QMATRIX[actualState][actionPath] = update(
       actualState, actionPath, nextStatePath, REWARDS, QMATRIX, ALPHA, GAMMA
@@ -19,15 +19,14 @@ TRAILS.forEach((trail, trailIndex) => {
     actualState = nextStatePath;
 
     if (actualState === trail.length - 1) break;
-
-    console.log(getBestPolicy(QMATRIX));
-
-    QMATRIX.forEach((lists, listIndex) => {
-      lists.forEach((number, numberIndex) => {
-        QMATRIX[listIndex][numberIndex] = Number(number.toFixed(2));
-      });
-    });
-
-    console.log(QMATRIX);
   }
+  console.log(getBestPolicy(QMATRIX));
+
+  QMATRIX.forEach((lists, listIndex) => {
+    lists.forEach((number, numberIndex) => {
+      QMATRIX[listIndex][numberIndex] = Number(number.toFixed(2));
+    });
+  });
+
+  console.log(QMATRIX);
 });

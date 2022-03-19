@@ -36,7 +36,7 @@ export const getBestPolicy = (qMatrix: number[][]) => {
     finalResult.push(direction);
   })
   return `
-  ${finalResult[4]}     
+  ${finalResult[4]}      Objective
   ${finalResult[2]}      ${finalResult[3]}
   ${finalResult[0]}      ${finalResult[1]}
   `
