@@ -1,10 +1,10 @@
 import { TRAILS, ALPHA, GAMMA, REWARDS, QMATRIX } from './constants';
 import { getBestPolicy, nextState, randomAction, update } from './auxiliar-functions';
 
-TRAILS.forEach((trail) => {
+TRAILS.forEach((trail, trailIndex) => {
   let actualState = 0;
 
-  console.log(`${TRAILS.indexOf(trail) + 1}º iteraction`);
+  console.log(`${trailIndex + 1}º iteraction`);
 
   for (const [currAction, nextAction] of trail) {
     const actionPath = randomAction(currAction);
@@ -22,9 +22,9 @@ TRAILS.forEach((trail) => {
 
     console.log(getBestPolicy(QMATRIX));
 
-    QMATRIX.forEach((lists) => {
-      lists.forEach((numbers) => {
-        QMATRIX[QMATRIX.indexOf(lists)][lists.indexOf(numbers)] = Number(numbers.toFixed(2));
+    QMATRIX.forEach((lists, listIndex) => {
+      lists.forEach((number, numberIndex) => {
+        QMATRIX[listIndex][numberIndex] = Number(number.toFixed(2));
       });
     });
 

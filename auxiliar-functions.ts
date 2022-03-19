@@ -21,8 +21,8 @@ export const update = (
   alpha: number,
   gamma: number
 ) => {
-  const estimateValue = rewardsMatrix[actualState][nextState] + gamma * Math.max(...qMatrix[nextState]);
-  const value = qMatrix[actualState][action] + alpha * (estimateValue - qMatrix[actualState][action]);
+  const estimateValue = (rewardsMatrix[nextState][action] + gamma) * Math.max(...qMatrix[nextState]);
+  const value = (qMatrix[actualState][action] + alpha) * (estimateValue - qMatrix[actualState][action]);
 
   return value
 };
