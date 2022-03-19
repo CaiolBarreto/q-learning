@@ -21,8 +21,8 @@ export const update = (
   alpha: number,
   gamma: number
 ) => {
-  const estimateValue = (rewardsMatrix[nextState][action] + gamma) * Math.max(...qMatrix[nextState]);
-  const value = (qMatrix[actualState][action] + alpha) * (estimateValue - qMatrix[actualState][action]);
+  const estimateValue = rewardsMatrix[nextState][action] + gamma * Math.max(...qMatrix[nextState]);
+  const value = qMatrix[actualState][action] + alpha * (estimateValue - qMatrix[actualState][action]);
 
   return value
 };
@@ -36,10 +36,15 @@ export const getBestPolicy = (qMatrix: number[][]) => {
     finalResult.push(direction);
   })
   return `
-  ${finalResult[4]}      Objective
-  ${finalResult[2]}      ${finalResult[3]}
-  ${finalResult[0]}      ${finalResult[1]}
-  `
+## Best policy ## \n
+-----------------
+|  ${finalResult[4]}  |  Goal  |
+-----------------
+|  ${finalResult[2]}  |   ${finalResult[3]}   |
+-----------------
+|  ${finalResult[0]}  |   ${finalResult[1]}   |
+-----------------
+`
 }
 
 export const nextState = (currentState: number, action: Direction): number => {

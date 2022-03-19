@@ -1,16 +1,16 @@
-import { TRAILS, ALPHA, GAMMA, REWARDS, QMATRIX } from './constants';
+import { TRAILS, ALPHA, GAMMA, REWARDS, QMATRIX, FINISHED_STATE } from './constants';
 import { getBestPolicy, nextState, randomAction, update } from './auxiliar-functions';
 
 TRAILS.forEach((trail, trailIndex) => {
   let actualState = 0;
 
-  console.log(`${trailIndex + 1}º iteraction`);
+  console.log(`========= ${trailIndex + 1}º iteraction =========\n`);
 
   for (const [currAction, nextAction] of trail) {
     const actionPath = randomAction(currAction);
     const nextStatePath = nextState(actualState, nextAction);
 
-    console.log(`${actualState + 1}: ${currAction} x ${nextAction} ----> ${nextStatePath + 1}`);
+    console.log(`Is at: ${actualState + 1}, takes: ${nextAction} and goes to ${nextStatePath + 1}`);
 
     QMATRIX[actualState][actionPath] = update(
       actualState, actionPath, nextStatePath, REWARDS, QMATRIX, ALPHA, GAMMA
@@ -18,9 +18,8 @@ TRAILS.forEach((trail, trailIndex) => {
 
     actualState = nextStatePath;
 
-    if (actualState === trail.length - 1) break;
+    if (actualState === FINISHED_STATE) break;
   }
-  console.log(getBestPolicy(QMATRIX));
 
   QMATRIX.forEach((lists, listIndex) => {
     lists.forEach((number, numberIndex) => {
@@ -28,5 +27,8 @@ TRAILS.forEach((trail, trailIndex) => {
     });
   });
 
-  console.log(QMATRIX);
+  console.log('\n#### Q Matrix ####\n')
+  QMATRIX.forEach((list) => console.log(list));
+
+  console.log(getBestPolicy(QMATRIX));
 });

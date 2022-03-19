@@ -22,6 +22,8 @@ export const QMATRIX = [
 export const ALPHA = 0.5;
 export const GAMMA = 1;
 
+export const FINISHED_STATE = 5;
+
 export const TRAILS: Direction[][][] = [
   [
     ['UP', 'RG'],
